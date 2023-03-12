@@ -1,0 +1,49 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%# image_tag("places_form_icon.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <div id="<%= dom_id @request %>" class="scaffold_record">
+              <div class="row">
+                <div class="col">
+                  <span class="text-primary">
+                    &emsp;
+                    Numero:
+                  </span>
+                  &emsp;
+                  <%= @request.name %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    &emsp;
+                    Data
+                  </span>
+                  &emsp;
+                  <%= l(@request.date) %>
+                  <%= @request.name %>
+                  <hr class="bg-primary"/>
+                  <span class="text-primary">
+                    &emsp;
+                    Aggiornata da
+                  </span>
+                  &emsp;
+                  <%= @request.updater %>
+                </div>
+              </div>
+            </div>
+            <hr class="bg-primary"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

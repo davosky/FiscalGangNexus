@@ -1,0 +1,53 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 1
+  date: 2023-03-12
+  practice: one
+  first_name: MyString
+  last_name: MyString
+  mobile: MyString
+  email: MyString
+  subscriber: false
+  category: one
+  note: MyText
+  operator: one
+  processed: false
+  updater: MyString
+  unprocessable: false
+  unprocessable_reason: MyString
+  first_call: false
+  second_call: false
+  third_call: false
+  first_call_date: 2023-03-12
+  second_call_date: 2023-03-12
+  third_call_date: 2023-03-12
+  first_call_updater: MyString
+  second_call_updater: MyString
+  third_call_updater: MyString
+
+two:
+  name: 1
+  date: 2023-03-12
+  practice: two
+  first_name: MyString
+  last_name: MyString
+  mobile: MyString
+  email: MyString
+  subscriber: false
+  category: two
+  note: MyText
+  operator: two
+  processed: false
+  updater: MyString
+  unprocessable: false
+  unprocessable_reason: MyString
+  first_call: false
+  second_call: false
+  third_call: false
+  first_call_date: 2023-03-12
+  second_call_date: 2023-03-12
+  third_call_date: 2023-03-12
+  first_call_updater: MyString
+  second_call_updater: MyString
+  third_call_updater: MyString

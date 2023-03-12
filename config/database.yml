@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  username: fiscalgang
+  password: Dfr368qE
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: fiscalgang_development
+
+test:
+  <<: *default
+  database: fiscalgang_test
+
+production:
+  <<: *default
+  database: fiscalgang_production

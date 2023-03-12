@@ -1,0 +1,30 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header mb-5">
+          <div class="modal-title">
+            <%= image_tag("request_edit_logo.svg", class: "img-fluid") %>
+          </div>
+          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </a>
+        </div>
+        <div class="modal-body mb-5">
+          <div class="col-8 offset-2">
+            <% if unupdatable(request) %>
+              <h3 class="text-warning text-center">
+                <%= image_tag("request_unupdatable_logo.svg", class: "img-fluid mb-5") %>
+                Non puoi più modificare questa richiesta!
+                <br/>
+                E' già Stata presa in carico da un operatore CAAF.
+              </h3>
+            <% else %>
+              <%= render "requests/form", request: request %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

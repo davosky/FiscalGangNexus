@@ -1,0 +1,99 @@
+<div class="col">
+  <p class="mb-3">
+    <%= image_tag("request_index_logo.svg", class: "img-fluid") %>
+  </p>
+  <hr class="hr-primary"/>
+  <table class="table table-hover">
+    <thead>
+      <th class="text-primary">
+        <i class="fa-solid fa-arrow-up-9-1"></i>
+        &nbsp;
+        Numero
+      </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-calendar-day"></i>
+        &nbsp;
+        Data
+      </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-user"></i>
+        &nbsp;
+        Utente
+      </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-mobile-screen"></i>
+        &nbsp;
+        Cellulare
+      </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-file-lines"></i>
+        &nbsp;
+        Pratica
+      </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-file-signature"></i>
+        &nbsp;
+        Sottoscrittore
+      </th>
+      <th colspan=2></th>
+    </thead>
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr class="<%= processed(request) %>">
+          <td>
+            <div class="d-grid">
+              <% unless request.note == nil || request.note.blank? %>
+                <%= link_to request_path(request), "data-controller": "turbo", class: "btn btn-outline-primary btn-sm" do %>
+                  <%= request.name %>
+                  &nbsp;
+                  <i class="fa-solid fa-clipboard-list"></i>
+                <% end %>
+              <% else %>
+                <%= link_to request_path(request), "data-controller": "turbo", class: "btn btn-outline-primary btn-sm" do %>
+                  <%= request.name %>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+          <td><%= l(request.date) %></td>
+          <td><%= customer(request) %></td>
+          <td><%= request.mobile %></td>
+          <td><%= request&.practice.name %></td>
+          <td>
+            <% unless request.subscriber == true %>
+              <span class="text-success">
+                <i class="fa-regular fa-user"></i>
+                &nbsp;
+                NON ISCRITTO
+              </span>
+            <% else %>
+              <span class="text-danger">
+                <i class="fa-regular fa-user"></i>
+                &nbsp;
+                ISCRITTO
+              </span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_request_path(request), "data-controller": "turbo" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Modifica il Record Corrente" do %>
+              <i class="fa-solid fa-pen-to-square text-warning"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to request_path(request),
+            "data-turbo-method": :delete,
+            "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
+            "data-bs-toggle": "tooltip", 
+            "title": "Elimina il Record Corrente" do%>
+              <i class="fa-solid fa-trash text-danger"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= paginate @requests %>
+</div>

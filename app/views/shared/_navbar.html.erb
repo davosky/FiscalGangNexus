@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag('navbar_logo.svg', class: 'img-fluid') %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item p-1">
+          <%= link_to requests_path, class: "nav-link" do %>
+            <i class="fa-solid fa-file-lines"></i>
+            &nbsp;
+            <i class="fa-solid fa-list"></i>
+            &nbsp;
+            Elenco Richieste Pratica
+          <% end %>
+        </li>
+        <% if no_caaf_operator %>
+          <li class="nav-item p-1">
+            <%= link_to new_request_path, "data-controller": "turbo", class: "nav-link" do %>
+              <i class="fa-solid fa-file-lines"></i>
+              &nbsp;
+              <i class="fa-solid fa-plus"></i>
+              &nbsp;
+              Nuova Richiesta Pratica
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropstart">
+          <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+          <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+            <% if admin? %>
+              <%= link_to rails_admin_path, class: 'dropdown-item'  do %>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                &nbsp;
+                Amministrazione
+              <% end %>
+            <% end %>
+            <br/>
+            <%= link_to destroy_operator_session_path, method: :get, class: "dropdown-item" do %>
+              <i class="fa-solid fa-door-open"></i>
+              &nbsp;
+              Esci
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

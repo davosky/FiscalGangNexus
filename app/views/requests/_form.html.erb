@@ -1,0 +1,87 @@
+<%= form_with(model: request) do |form| %>
+  <% if request.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(request.errors.count, "error") %> Errore!&emsp;Non posso salvare per i seguenti motivi:</h2>
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed text-danger">
+      <i class="fa-solid fa-user"></i>
+      &nbsp;&nbsp;
+      <%= form.label :first_name %>
+    </span>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed text-danger">
+      <i class="fa-regular fa-user"></i>
+      &nbsp;&nbsp;
+      <%= form.label :last_name %>
+    </span>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed text-danger">
+      <i class="fa-solid fa-mobile-screen"></i>
+      &nbsp;&nbsp;
+      <%= form.label :mobile %>
+    </span>
+    <%= form.text_field :mobile, class: 'form-control' %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed">
+      <i class="fa-solid fa-at"></i>
+      &nbsp;&nbsp;
+      <%= form.label :email %>
+    </span>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="card mb-2 border-secondary">
+    <div class="card-body">
+      <div class="form-check form-check-inline">
+        <%= form.label :subscriber, class: "form-check-label" do %>
+          <i class="fa-regular fa-user"></i>
+          &nbsp;
+          Sottoscrittore
+          &emsp;
+          <small class="text-warning">
+            [ ATTENZIONE - se abilitato &egrave; obbligatorio specificatre la CATEGORIA ]
+          </small>
+        <% end %>
+        <%= form.check_box :subscriber, class: 'form-check-input' %>
+      </div>
+      <div class="input-group mb-2 mt-3">
+        <span class="input-group-text input-group-text-fixed">
+          <i class="fa-regular fa-square"></i>
+          &nbsp;&nbsp;
+          <%= form.label :category %>
+        </span>
+        <%= form.collection_select(:category_id, Category.order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+      </div>
+    </div>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed text-danger">
+      <i class="fa-solid fa-file-lines"></i>
+      &nbsp;&nbsp;
+      <%= form.label :practice %>
+    </span>
+    <%= form.collection_select(:practice_id, Practice.order(position: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed">
+      <i class="fa-solid fa-clipboard-list"></i>
+      &nbsp;&nbsp;
+      <%= form.label :note %>
+    </span>
+    <%= form.text_area :note, class: 'form-control' %>
+  </div>
+  <div class="d-grid">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

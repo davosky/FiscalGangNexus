@@ -1,0 +1,81 @@
+html {
+  font-family: "Teko-Regular";
+}
+/* DOM */
+body {
+  font-family: "Teko-Regular";
+  font-weight: 400;
+  font-size: 15pt;
+  background-color: $panna;
+}
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+.hr-primary {
+  height: 0.3rem;
+  border-top: solid 0.3rem $primary;
+  margin: 1rem 0;
+  padding: 0;
+}
+/* BUTTONS */
+.btn {
+  font-family: "Teko-Regular";
+  font-weight: 600;
+  font-size: 15pt;
+}
+/* FORMS */
+.form-control {
+  font-family: "Teko-Regular";
+  font-weight: 600;
+  font-size: 15pt;
+}
+/* NAVBAR */
+.dropdown-menu {
+  background-color: $primary;
+  color: $white;
+  border-color: $white;
+  padding: 0.6rem;
+}
+.dropdown-item {
+  font-family: "Teko-Regular";
+  font-weight: 400;
+  font-size: 15pt;
+  color: $white;
+
+  &:hover {
+    color: $primary;
+    background-color: $white;
+    border-radius: 0.3rem;
+  }
+}
+.nav-link {
+  font-family: "Teko-Regular";
+  font-weight: 400;
+  font-size: 15pt;
+  color: $white;
+
+  &:hover {
+    color: $primary;
+    background-color: $white;
+    border-radius: 0.3rem;
+  }
+}
+/* FORMS */
+.input-group-text-fixed {
+  min-width: 7rem;
+  background-color: $panna;
+}
+.form-check-input {
+  border: solid 0.2rem $warning;
+}
+/* TABLES */
+.tr-unprocessed {
+  background-color: $orange-light;
+}
+.tr-processed {
+  background-color: $green-light;
+}
