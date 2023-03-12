@@ -69,9 +69,15 @@ class Request < ApplicationRecord
     subscriber
   end
 
+  def category?
+    category_id
+  end
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :mobile, presence: true
+  validates :practice_id, presence: true
   validates :unprocessable_reason, presence: true, if: :unprocessable?
   validates :category_id, presence: true, if: :subscriber?
+  validates :subscriber, presence: true, if: :category?
 end
