@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  resources :requests
-  root "home#index"
+  root "requests#index"
 
-  get "home/index"
-  get "home/credits"
+  resources :requests
 
   devise_for :operators, skip: [:registrations]
   as :operator do

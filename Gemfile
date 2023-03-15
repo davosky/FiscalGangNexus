@@ -11,6 +11,8 @@ gem "devise-i18n", "~> 1.11"
 gem "image_processing", "~> 1.2"
 gem "jbuilder"
 gem "jsbundling-rails"
+gem "kaminari", "~> 1.2"
+gem "kaminari-i18n", "~> 0.5.0"
 gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
@@ -43,5 +45,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "kaminari", "~> 1.2"

@@ -21,5 +21,11 @@ module FiscalGangNexus
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.test_framework nil
+      g.jbuilder false
+    end
   end
 end

@@ -12,15 +12,20 @@
         </div>
         <div class="modal-body mb-5">
           <div class="col-8 offset-2">
-            <% if unupdatable(request) %>
-              <h3 class="text-warning text-center">
-                <%= image_tag("request_unupdatable_logo.svg", class: "img-fluid mb-5") %>
-                Non puoi più modificare questa richiesta!
-                <br/>
-                E' già Stata presa in carico da un operatore CAAF.
-              </h3>
+            <!-- CHECK IF CURRENT OPERATOR IS A CAAF OPERATOR -->
+            <% if no_caaf_operator %>
+              <% if unupdatable(request) %>
+                <h3 class="text-warning text-center">
+                  <%= image_tag("request_unupdatable_logo.svg", class: "img-fluid mb-5") %>
+                  Non puoi più modificare questa richiesta!
+                  <br/>
+                  E' già Stata presa in carico da un operatore CAAF.
+                </h3>
+              <% else %>
+                <%= render "requests/form", request: request %>
+              <% end %>
             <% else %>
-              <%= render "requests/form", request: request %>
+              <%= render "requests/form_caaf", request: request %>
             <% end %>
           </div>
         </div>

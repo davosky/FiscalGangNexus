@@ -1,0 +1,134 @@
+<%= form_with(model: request) do |form| %>
+  <% if request.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(request.errors.count, "error") %> Errore!&emsp;Non posso salvare per i seguenti motivi:</h2>
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h3 class="text-primary">
+    Processamento della Richiesta Pratica N°:
+    &emsp;
+    <strong><%= @request.name %>&emsp;</strong>
+    del&emsp;
+    <strong><%= l(@request.date) %></strong>
+  </h3>
+  <hr class='hr-primary'/>
+  <% if first_call_check(request) %>
+    <%= form.check_box :first_call, class: "form-check-input form-check-input-primary", disabled: true %>
+    &nbsp;
+    <span class="text-light">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Prima Chiamata
+    </span>
+  <% else %>
+    <%= form.check_box :first_call, class: "form-check-input form-check-input-primary" %>
+    &nbsp;
+    <span class="text-primary">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Prima Chiamata
+    </span>
+  <% end %>
+  &emsp;
+  <% if second_call_check(request) %>
+    <%= form.check_box :second_call, class: "form-check-input form-check-input-primary", disabled: true %>
+    &nbsp;
+    <span class="text-light">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Seconda Chiamata
+    </span>
+  <% else %>
+    <%= form.check_box :second_call, class: "form-check-input form-check-input-primary" %>
+    &nbsp;
+    <span class="text-primary">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Seconda Chiamata
+    </span>
+  <% end %>
+  &emsp;
+  <% if third_call_check(request) %>
+    <%= form.check_box :third_call, class: "form-check-input form-check-input-primary", disabled: true %>
+    &nbsp;
+    <span class="text-light">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Terza Chiamata
+    </span>
+  <% else %>
+    <%= form.check_box :third_call, class: "form-check-input form-check-input-primary" %>
+    &nbsp;
+    <span class="text-primary">
+      <i class='fas fas fa-phone-volume'></i>
+      &nbsp;
+      Terza Chiamata
+    </span>
+  <% end %>
+  <hr />
+  <% if processed_check(request) %>
+    <%= form.check_box :processed, class: "form-check-input", disabled: true %>
+    &nbsp;
+    <span class="text-light">
+      <i class="fa-regular fa-thumbs-up"></i>
+      &nbsp;
+      Presa in Carico e Processata
+    </span>
+  <% else %>
+    <%= form.check_box :processed, class: "form-check-input form-check-input-success" %>
+    &nbsp;
+    <span class="text-success">
+      <i class="fa-regular fa-thumbs-up"></i>
+      &nbsp;
+      Presa in Carico e Processata
+    </span>
+  <% end %>
+  <hr/>
+  <% if unprocessable_check(request) %>
+    <%= form.check_box :unprocessable, class: "form-check-input", disabled: true %>
+    &nbsp;
+    <span class="text-light">
+      <i class="fa-regular fa-thumbs-down"></i>
+      &nbsp;
+      Non Processabile
+    </span>
+    <br/>
+    <span class="form-check-label text-light">Motivo del mancato processamento</span>
+    &emsp;
+    <%= form.text_field :unprocessable_reason, class: "form-control", disabled: true %>
+    <span class="float-end">
+      <small class="text-light">
+        ATTENZIONE! è obbligatorio inserire il motivo del mancato processamento
+      </small>
+    </span>
+    <br/>
+  <% else %>
+    <%= form.check_box :unprocessable, class: "form-check-input form-check-input-danger" %>
+    &nbsp;
+    <span class="text-danger">
+      <i class="fa-regular fa-thumbs-down"></i>
+      &nbsp;
+      Non Processabile
+    </span>
+    <br/>
+    <span class="form-check-label text-danger">Motivo del mancato processamento</span>
+    &emsp;
+    <%= form.text_field :unprocessable_reason, class: "form-control" %>
+    <span class="float-end">
+      <small class="text-danger">
+        ATTENZIONE! è obbligatorio inserire il motivo del mancato processamento
+      </small>
+    </span>
+    <br/>
+  <% end %>
+  <hr class="hr-primary"/>
+  <br/>
+  <div class="d-grid">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

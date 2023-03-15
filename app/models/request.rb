@@ -78,6 +78,7 @@ class Request < ApplicationRecord
   validates :mobile, presence: true
   validates :practice_id, presence: true
   validates :unprocessable_reason, presence: true, if: :unprocessable?
+  validates :unprocessable, presence: true, if: :unprocessable_reason?
   validates :category_id, presence: true, if: :subscriber?
   validates :subscriber, presence: true, if: :category?
 end

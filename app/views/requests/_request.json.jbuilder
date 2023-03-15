@@ -1,2 +1,0 @@
-json.extract! request, :id, :name, :date, :practice_id, :first_name, :last_name, :mobile, :email, :subscriber, :category_id, :note, :operator_id, :processed, :updater, :unprocessable, :unprocessable_reason, :first_call, :second_call, :third_call, :first_call_date, :second_call_date, :third_call_date, :first_call_updater, :second_call_updater, :third_call_updater, :created_at, :updated_at
-json.url request_url(request, format: :json)

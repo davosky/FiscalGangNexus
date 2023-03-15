@@ -1,12 +1,13 @@
 html {
-  font-family: "Teko-Regular";
+  font-family: "RobotoCondensed-Regular";
 }
 /* DOM */
 body {
-  font-family: "Teko-Regular";
-  font-weight: 400;
-  font-size: 15pt;
-  background-color: $panna;
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 300;
+  font-size: 12pt;
+  background-color: $very-light-gray;
+  padding-top: 5.6rem;
 }
 a {
   text-decoration: none;
@@ -23,15 +24,9 @@ a {
 }
 /* BUTTONS */
 .btn {
-  font-family: "Teko-Regular";
-  font-weight: 600;
-  font-size: 15pt;
-}
-/* FORMS */
-.form-control {
-  font-family: "Teko-Regular";
-  font-weight: 600;
-  font-size: 15pt;
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 500;
+  font-size: 12pt;
 }
 /* NAVBAR */
 .dropdown-menu {
@@ -41,9 +36,9 @@ a {
   padding: 0.6rem;
 }
 .dropdown-item {
-  font-family: "Teko-Regular";
-  font-weight: 400;
-  font-size: 15pt;
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 300;
+  font-size: 12pt;
   color: $white;
 
   &:hover {
@@ -53,29 +48,51 @@ a {
   }
 }
 .nav-link {
-  font-family: "Teko-Regular";
-  font-weight: 400;
-  font-size: 15pt;
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 300;
+  font-size: 12pt;
   color: $white;
 
   &:hover {
-    color: $primary;
-    background-color: $white;
+    color: $white;
+    background-color: $info;
     border-radius: 0.3rem;
   }
 }
 /* FORMS */
+.form-control {
+  font-family: "RobotoCondensed-Regular";
+  font-weight: 500;
+  font-size: 12pt;
+}
 .input-group-text-fixed {
   min-width: 7rem;
-  background-color: $panna;
+  background-color: $gray-100;
 }
 .form-check-input {
   border: solid 0.2rem $warning;
 }
+.form-check-input-primary {
+  border: solid 0.2rem $primary;
+}
+.form-check-input-success {
+  border: solid 0.2rem $success;
+}
+.form-check-input-danger {
+  border: solid 0.2rem $danger;
+}
 /* TABLES */
+table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  border-radius: 0.9rem;
+}
 .tr-unprocessed {
   background-color: $orange-light;
 }
 .tr-processed {
   background-color: $green-light;
+}
+.tr-regular {
+  background-color: $white;
 }

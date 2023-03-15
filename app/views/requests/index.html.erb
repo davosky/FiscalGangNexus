@@ -35,6 +35,11 @@
         &nbsp;
         Sottoscrittore
       </th>
+      <th class="text-primary">
+        <i class="fa-solid fa-phone-volume"></i>
+        &nbsp;
+        Chiamate
+      </th>
       <th colspan=2></th>
     </thead>
     <tbody>
@@ -43,13 +48,19 @@
           <td>
             <div class="d-grid">
               <% unless request.note == nil || request.note.blank? %>
-                <%= link_to request_path(request), "data-controller": "turbo", class: "btn btn-outline-primary btn-sm" do %>
-                  <%= request.name %>
+                <%= link_to request_path(request), "data-controller": "turbo", "data-bs-toggle": "tooltip", 
+            "title": "Visualizza Dettaglio", class: "btn btn-outline-secondary btn-sm" do %>
+                  <strong>
+                    <%= request.name %>
+                  </strong>
                   &nbsp;
-                  <i class="fa-solid fa-clipboard-list"></i>
+                  <span class="float-start">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                  </span>
                 <% end %>
               <% else %>
-                <%= link_to request_path(request), "data-controller": "turbo", class: "btn btn-outline-primary btn-sm" do %>
+                <%= link_to request_path(request), "data-controller": "turbo", "data-bs-toggle": "tooltip", 
+            "title": "Visualizza Dettaglio", class: "btn btn-outline-secondary btn-sm" do %>
                   <%= request.name %>
                 <% end %>
               <% end %>
@@ -75,6 +86,9 @@
             <% end %>
           </td>
           <td>
+            <%= call_display(request) %>
+          </td>
+          <td>
             <%= link_to edit_request_path(request), "data-controller": "turbo" , 
             "data-bs-toggle": "tooltip", 
             "title": "Modifica il Record Corrente" do %>
@@ -82,18 +96,26 @@
             <% end %>
           </td>
           <td>
-            <%= link_to request_path(request),
+            <% if no_caaf_operator %>
+              <% if deleteable(request) %>
+                <i class="fa-solid fa-trash text-light"></i>
+              <% else %>
+                <%= link_to request_path(request),
             "data-turbo-method": :delete,
             "data-turbo-confirm": "Sicuri di voler eliminare il record corrente?" , 
             "data-bs-toggle": "tooltip", 
             "title": "Elimina il Record Corrente" do%>
-              <i class="fa-solid fa-trash text-danger"></i>
+                  <i class="fa-solid fa-trash text-danger"></i>
+                <% end %>
+              <% end%>
             <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<div class="row">
   <br>
   <%= paginate @requests %>
 </div>

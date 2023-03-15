@@ -1,19 +1,19 @@
 /* FONTS */
 @font-face {
-  font-family: "Teko-Regular";
+  font-family: "RobotoCondensed-Regular";
   font-style: normal;
-  font-weight: 400;
-  src: url("Teko-Regular.ttf") format("truetype");
+  font-weight: 300;
+  src: url("RobotoCondensed-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Teko-Medium";
-  src: url("Teko-Medium.ttf") format("truetype");
+  font-family: "RobotoCondensed-Light";
+  src: url("RobotoCondensed-Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Teko-Bold";
-  src: url("Teko-Bold.ttf") format("truetype");
+  font-family: "RobotoCondensed-Bold";
+  src: url("RobotoCondensed-Bold.ttf") format("truetype");
 }
 
 /* COLORS */
@@ -30,18 +30,19 @@ $gray-900: #1a1a1a !default;
 $black: #000 !default;
 
 $blue: #4662d9 !default;
-$indigo: #706aff !default;
+$indigo: #4b49ac !default;
 $purple: #d946ad !default;
 $pink: #fd7cff !default;
-$red: #ff524e !default;
+$red: #ff3431 !default;
 $orange: #ff803b !default;
 $yellow: #f2e20f !default;
-$green: #1cad1f !default;
+$green: #14ac17 !default;
 $teal: #00d1a5 !default;
 $cyan: #00bcc7 !default;
 $panna: #faf8ed !default;
-$orange-light: #ffe8d1 !default;
-$green-light: #d1ffd5ff !default;
+$orange-light: #fae1e1 !default;
+$green-light: rgb(224, 255, 226) !default;
+$very-light-gray: #f1f1f1 !default;
 
 $primary: $blue !default;
 $success: $green !default;
