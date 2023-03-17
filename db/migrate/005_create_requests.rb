@@ -6,6 +6,7 @@ class CreateRequests < ActiveRecord::Migration[7.0]
       t.references :practice, null: true, foreign_key: true
       t.string :first_name
       t.string :last_name
+      t.references :sex, null: true, foreign_key: true
       t.string :mobile
       t.string :email
       t.boolean :subscriber

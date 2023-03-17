@@ -2,6 +2,9 @@ class Request < ApplicationRecord
   belongs_to :practice, optional: true
   belongs_to :category, optional: true
   belongs_to :operator, optional: true
+  belongs_to :sex, optional: true
+
+  enum sex: [:M, :F]
 
   before_create :set_name, :set_date
 
@@ -75,6 +78,7 @@ class Request < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :sex, presence: true
   validates :mobile, presence: true
   validates :mobile, length: { maximum: 15 }
   validates :practice_id, presence: true

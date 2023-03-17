@@ -28,6 +28,13 @@
             <% end %>
           </li>
         <% end %>
+        <li class="nav-item p-1">
+          <%= link_to dashboard_index_path, class: "nav-link" do %>
+            <i class="fa-solid fa-chart-line"></i>
+            &nbsp;
+            Statistiche
+          <% end %>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -41,14 +48,19 @@
             <i class="fa-solid fa-bars"></i>
           </a>
           <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+            <%= link_to dashboard_credits_path, class: "dropdown-item" do %>
+              <i class="fa-solid fa-user-astronaut"></i>
+              &nbsp;
+              Crediti
+            <% end %>
             <% if admin? %>
               <%= link_to rails_admin_path, class: 'dropdown-item'  do %>
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 &nbsp;
                 Amministrazione
               <% end %>
+              <br/>
             <% end %>
-            <br/>
             <%= link_to destroy_operator_session_path, method: :get, class: "dropdown-item" do %>
               <i class="fa-solid fa-door-open"></i>
               &nbsp;

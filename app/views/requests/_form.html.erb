@@ -27,6 +27,14 @@
   </div>
   <div class="input-group mb-2">
     <span class="input-group-text input-group-text-fixed text-danger">
+      <i class="fa-solid fa-venus-mars"></i>
+      &nbsp;&nbsp;
+      <%= form.label :sex %>
+    </span>
+    <%= form.collection_select(:sex_id, Sex.order(created_at: "ASC"), :id, :name, {:include_blank => true}, {:class => "form-select"}) %>
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text input-group-text-fixed text-danger">
       <i class="fa-solid fa-mobile-screen"></i>
       &nbsp;&nbsp;
       <%= form.label :mobile %>

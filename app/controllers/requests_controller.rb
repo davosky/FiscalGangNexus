@@ -57,6 +57,6 @@ class RequestsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def request_params
-    params.require(:request).permit(:name, :date, :practice_id, :first_name, :last_name, :mobile, :email, :subscriber, :category_id, :note, :operator_id, :processed, :updater, :unprocessable, :unprocessable_reason, :first_call, :second_call, :third_call, :first_call_date, :second_call_date, :third_call_date, :first_call_updater, :second_call_updater, :third_call_updater)
+    params.require(:request).permit(:name, :date, :practice_id, :first_name, :last_name, :sex_id, :mobile, :email, :subscriber, :category_id, :note, :operator_id, :processed, :updater, :unprocessable, :unprocessable_reason, :first_call, :second_call, :third_call, :first_call_date, :second_call_date, :third_call_date, :first_call_updater, :second_call_updater, :third_call_updater)
   end
 end

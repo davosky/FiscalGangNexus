@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 4) do
+ActiveRecord::Schema[7.0].define(version: 5) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.integer "position"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 4) do
     t.bigint "practice_id"
     t.string "first_name"
     t.string "last_name"
+    t.bigint "sex_id"
     t.string "mobile"
     t.string "email"
     t.boolean "subscriber"
@@ -76,9 +77,18 @@ ActiveRecord::Schema[7.0].define(version: 4) do
     t.index ["category_id"], name: "index_requests_on_category_id"
     t.index ["operator_id"], name: "index_requests_on_operator_id"
     t.index ["practice_id"], name: "index_requests_on_practice_id"
+    t.index ["sex_id"], name: "index_requests_on_sex_id"
+  end
+
+  create_table "sexes", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name"
+    t.boolean "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "requests", "categories"
   add_foreign_key "requests", "operators"
   add_foreign_key "requests", "practices"
+  add_foreign_key "requests", "sexes"
 end

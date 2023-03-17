@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :requests
 
+  get "dashboard/index"
+  get "dashboard/credits"
+
   devise_for :operators, skip: [:registrations]
   as :operator do
     get "operators/edit" => "devise/registrations#edit", :as => "edit_operator_registration"

@@ -6,7 +6,7 @@
           <div class="modal-title">
             <%= image_tag("request_detail_logo.svg", class: "img-fluid") %>
           </div>
-          <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
+          <a class="btn btn-light modal-header-link" data-bs-dismiss="modal" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
           </a>
         </div>
@@ -41,7 +41,12 @@
                         <tbody>
                           <tr >
                             <td class="text-info">Nome:</td>
-                            <td class="text-primary"><%= @request.first_name %></td>
+                            <td class="text-primary">
+                              <%= @request.first_name %>
+                              <span class="float-end">
+                                <%= gender_icon(@request) %>
+                              </span>
+                            </td>
                           </tr>
                           <tr >
                             <td class="text-info">Cognome:</td>

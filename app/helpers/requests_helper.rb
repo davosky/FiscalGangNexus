@@ -18,9 +18,21 @@ module RequestsHelper
   def is_subscriber(request)
     subscription_status = ""
     unless request.subscriber != true
-      subscription_status = "Iscritto&emsp;<i class='fa-solid fa-square text-danger'></i>"
+      if request.sex_id == 1
+        subscription_status = "Iscritta&emsp;<i class='fa-solid fa-square text-danger'></i>"
+      elsif request.sex_id == 2
+        subscription_status = "Iscritto&emsp;<i class='fa-solid fa-square text-danger'></i>"
+      else
+        subscription_status = "Iscritt*&emsp;<i class='fa-solid fa-square text-danger'></i>"
+      end
     else
-      subscription_status = "Non Iscritto&emsp;<i class='fa-solid fa-square text-success'></i>"
+      if request.sex_id == 1
+        subscription_status = "Non Iscritta&emsp;<i class='fa-solid fa-square text-success'></i>"
+      elsif request.sex_id == 2
+        subscription_status = "Non Iscritto&emsp;<i class='fa-solid fa-square text-success'></i>"
+      else
+        subscription_status = "Non Iscritt*&emsp;<i class='fa-solid fa-square text-success'></i>"
+      end
     end
     subscription_status.html_safe
   end
@@ -78,5 +90,17 @@ module RequestsHelper
     else
     end
     phone.html_safe
+  end
+
+  def gender_icon(request)
+    gendericon = ""
+    if request.sex_id == 1
+      gendericon = "<i class='fa-solid fa-venus'></i>"
+    elsif request.sex_id == 2
+      gendericon = "<i class='fa-solid fa-mars'></i>"
+    else
+      gendericon = "<i class='fa-solid fa-venus-mars'></i>"
+    end
+    gendericon.html_safe
   end
 end

@@ -27,6 +27,20 @@ a {
   font-family: "RobotoCondensed-Regular";
   font-weight: 500;
   font-size: 12pt;
+
+  .btn-light {
+    font-family: "RobotoCondensed-Regular";
+    font-weight: 600;
+    font-size: 14pt;
+    color: $red;
+    border: solid $red 0.6rem;
+    background-color: $white;
+
+    &:hover {
+      background-color: $red;
+      color: $primary;
+    }
+  }
 }
 /* NAVBAR */
 .navbar-nav {

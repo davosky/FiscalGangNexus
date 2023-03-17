@@ -1,10 +1,9 @@
 .bg-login-image {
   background: url(main_logo.svg);
   background-position: center;
-  background-size: cover;
-  min-height: 748;
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 form.user {
@@ -23,11 +22,10 @@ form.user {
 
   .btn-user {
     font-size: 18pt;
-    border-radius: 10rem;
     padding: 0.75rem 1rem;
   }
 
   .rounded-border {
-    border-radius: 0.3rem;
+    border-radius: 1rem;
   }
 }

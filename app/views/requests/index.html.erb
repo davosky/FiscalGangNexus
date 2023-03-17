@@ -71,19 +71,7 @@
           <td><%= request.mobile %></td>
           <td><%= request&.practice.name %></td>
           <td>
-            <% if request.subscriber == true %>
-              <span class="text-danger">
-                <i class="fa-regular fa-user"></i>
-                &nbsp;
-                ISCRITTO
-              </span>
-            <% else %>
-              <span class="text-success">
-                <i class="fa-regular fa-user"></i>
-                &nbsp;
-                NON ISCRITTO
-              </span>
-            <% end %>
+            <%= is_subscriber(request) %>
           </td>
           <td>
             <%= call_display(request) %>
