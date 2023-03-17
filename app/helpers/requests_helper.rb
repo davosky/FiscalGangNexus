@@ -3,6 +3,28 @@ module RequestsHelper
     "#{request.first_name} #{request.last_name}"
   end
 
+  def request_creator(request)
+    "#{request.operator.first_name} #{request.operator.last_name}"
+  end
+
+  def request_creator_phone(request)
+    "#{request.operator.phone}"
+  end
+
+  def request_creator_category(request)
+    "#{request.operator.category}"
+  end
+
+  def is_subscriber(request)
+    subscription_status = ""
+    unless request.subscriber != true
+      subscription_status = "Iscritto&emsp;<i class='fa-solid fa-square text-danger'></i>"
+    else
+      subscription_status = "Non Iscritto&emsp;<i class='fa-solid fa-square text-success'></i>"
+    end
+    subscription_status.html_safe
+  end
+
   def unupdatable(request)
     request.processed == true || request.first_call == true || request.second_call == true || request.third_call == true || request.unprocessable == true
   end

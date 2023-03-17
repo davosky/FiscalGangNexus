@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def full_operator
-    "#{current_operator.name} #{current_operator.last_name} - #{current_operator.category}"
+    "#{current_operator.first_name} #{current_operator.last_name} - #{current_operator.category}"
   end
 
   def no_caaf_operator

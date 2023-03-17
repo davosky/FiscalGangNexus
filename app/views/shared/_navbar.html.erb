@@ -30,6 +30,12 @@
         <% end %>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to edit_operator_registration_path, class: "nav-link" do %>
+            <%= full_operator %>
+            &emsp;
+          <% end %>
+        </li>
         <li class="nav-item dropstart">
           <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>

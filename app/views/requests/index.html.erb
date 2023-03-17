@@ -71,17 +71,17 @@
           <td><%= request.mobile %></td>
           <td><%= request&.practice.name %></td>
           <td>
-            <% unless request.subscriber == true %>
-              <span class="text-success">
-                <i class="fa-regular fa-user"></i>
-                &nbsp;
-                NON ISCRITTO
-              </span>
-            <% else %>
+            <% if request.subscriber == true %>
               <span class="text-danger">
                 <i class="fa-regular fa-user"></i>
                 &nbsp;
                 ISCRITTO
+              </span>
+            <% else %>
+              <span class="text-success">
+                <i class="fa-regular fa-user"></i>
+                &nbsp;
+                NON ISCRITTO
               </span>
             <% end %>
           </td>

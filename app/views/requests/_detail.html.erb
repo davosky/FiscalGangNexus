@@ -4,42 +4,182 @@
       <div class="modal-content">
         <div class="modal-header mb-5">
           <div class="modal-title">
-            <%# image_tag("places_form_icon.svg", class: "img-fluid") %>
+            <%= image_tag("request_detail_logo.svg", class: "img-fluid") %>
           </div>
           <a class="modal-header-link" data-bs-dismiss="modal" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
           </a>
         </div>
         <div class="modal-body mb-5">
-          <div class="col-8 offset-2">
+          <div class="col-10 offset-1">
             <div id="<%= dom_id @request %>" class="scaffold_record">
-              <div class="row">
-                <div class="col">
-                  <span class="text-primary">
-                    &emsp;
-                    Numero:
-                  </span>
-                  &emsp;
-                  <%= @request.name %>
-                  <hr class="bg-primary"/>
-                  <span class="text-primary">
-                    &emsp;
-                    Data
-                  </span>
-                  &emsp;
-                  <%= l(@request.date) %>
-                  <%= @request.name %>
-                  <hr class="bg-primary"/>
-                  <span class="text-primary">
-                    &emsp;
-                    Aggiornata da
-                  </span>
-                  &emsp;
-                  <%= @request.updater %>
+              <h3 class="text-primary">
+                Richiesta Pratica Numero:&nbsp;<%= @request.name %>&emsp;Del:&nbsp;<%= l(@request.date) %>
+              </h3>
+              <span class="float-start text-secondary">
+                Creata da:
+                &emsp;
+                <i class="fa-solid fa-user"></i>
+                &nbsp;
+                <strong><%= request_creator(@request) %></strong>
+                &emsp;
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                &nbsp;
+                <strong><%= request_creator_phone(@request) %></strong>
+                &emsp;
+                <i class="fa-solid fa-square"></i>
+                &nbsp;
+                <strong><%= request_creator_category(@request) %></strong>
+              </span>
+              <br/>
+              <br/>
+              <div class="card shadow">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <table class="table">
+                        <tbody>
+                          <tr >
+                            <td class="text-info">Nome:</td>
+                            <td class="text-primary"><%= @request.first_name %></td>
+                          </tr>
+                          <tr >
+                            <td class="text-info">Cognome:</td>
+                            <td class="text-primary"><%= @request.last_name %></td>
+                          </tr>
+                          <tr >
+                            <td class="text-info">Telefono:</td>
+                            <td class="text-primary"><%= @request.mobile %></td>
+                          </tr>
+                          <tr >
+                            <td class="text-info">E-Mail:</td>
+                            <td class="text-primary"><%= @request.email %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col">
+                      <table class="table">
+                        <tbody>
+                          <tr >
+                            <td class="text-info">Pratica:</td>
+                            <td class="text-primary"><%= @request.practice.name %></td>
+                          </tr>
+                          <tr >
+                            <td class="text-info">Iscrizione:</td>
+                            <td class="text-primary">
+                              <%= is_subscriber(@request) %>
+                              &nbsp;
+                              <span class="text-danger">
+                                <%= @request.category.name unless @request.category_id == nil %>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <br/>
+                  <div class="row">
+                    <div class="col">
+                      <span class="flotat-start">
+                        <span class="text-info">
+                          Note:
+                        </span>
+                        <br/>
+                        <span class="text-primary">
+                          <%= @request.note %>
+                        </span>
+                      </span>
+                    </div>
+                    <div class="col">
+                      <span class="flotat-start">
+                        <span class="text-info">
+                          Chiamate:
+                        </span>
+                        <br/>
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <% if @request.first_call_date? %>
+                                <td class="text-primary">
+                                  <i class='fa-solid fa-phone-volume text-primary'></i>
+                                  &nbsp;
+                                  Prima chiamata: &emsp; 
+                                </td>
+                                <td class="text-primary">
+                                  <%= l(@request.first_call_date, format: "%A %d %B %Y") %>
+                                </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <% if @request.second_call_date? %>
+                                <td class="text-primary">
+                                  <i class='fa-solid fa-phone-volume text-primary'></i>
+                                  &nbsp;
+                                  Seconda chiamata: &emsp; 
+                                </td>
+                                <td class="text-primary">
+                                  <%= l(@request.second_call_date, format: "%A %d %B %Y") %>
+                                </td>
+                              <% end %>
+                            </tr>
+                            <tr>
+                              <% if @request.third_call_date? %>
+                                <td class="text-primary">
+                                  <i class='fa-solid fa-phone-volume text-primary'></i>
+                                  &nbsp;
+                                  Seconda chiamata: &emsp; 
+                                </td>
+                                <td class="text-primary">
+                                  <%= l(@request.third_call_date, format: "%A %d %B %Y") %>
+                                </td>
+                              <% end %>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <br/>
+              <div class="row">
+                <div class="col">
+                  <% if @request.processed == true %>
+                    <span class='float-start text-success'>
+                      <i class="fa-solid fa-thumbs-up"></i>
+                      &emsp;
+                      Richiesta presa in carico e processata da:
+                      &emsp;
+                      <%= @request.updater %>
+                      &emsp;
+                      in data:
+                      &emsp;
+                      <%= l(@request.updated_at, format: '%A %d %B %Y') %>
+                    </span>
+                  <% end %>
+                </div>
+                <% if @request.unprocessable == true %>
+                  <span class='float-start text-danger'>
+                    <i class="fa-solid fa-thumbs-down"></i>
+                    &emsp;
+                    Richiesta non processabile per il seguente motivo:
+                    &emsp;
+                    <%= @request.unprocessable_reason %>
+                    <br/>
+                    <small class='text-danger'>
+                      Richiesta Pratica controllata da:
+                      &emsp;
+                      <%= @request.updater %>
+                      &emsp;
+                      in data: &nbsp;&nbsp;
+                      <%= l(@request.updated_at, format: '%A %d %B %Y') %>
+                    </small>
+                  </span>
+                <% end %>
+              </div>
             </div>
-            <hr class="bg-primary"/>
           </div>
         </div>
       </div>
