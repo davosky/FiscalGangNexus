@@ -76,6 +76,7 @@ class Request < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :mobile, presence: true
+  validates :mobile, length: { maximum: 15 }
   validates :practice_id, presence: true
   validates :unprocessable_reason, presence: true, if: :unprocessable?
   validates :unprocessable, presence: true, if: :unprocessable_reason?
