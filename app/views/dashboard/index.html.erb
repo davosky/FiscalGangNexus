@@ -1,2 +1,191 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row">
+  <div class="col-4">
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="text-primary">
+            Iscritti per Categoria
+            <br/>
+            che hanno fatto richiesta
+            al CAAF
+          </span>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+            <% @total = 0 %>
+            <% @categories.each do |category| %>
+              <tr>
+                <td>
+                  Iscritti
+                  &emsp;
+                  <%= category.name %>
+                </td>
+                <td>
+                  <%= category.requests.count %>
+                </td>
+              </tr>
+              <% @total = @total + category.requests.count %>
+            <% end %>
+          </tbody>
+        </table>
+        <span class="float-end me-5 pe-5">
+          <h5 class="text-info">
+            Totale:
+            &emsp;
+            <%= @total %>
+            &emsp;
+            richieste
+          </h5>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <div class="card-title">
+          <span class="text-primary">
+            Operatori CGIL
+            <br/>
+            che hanno fatto richiesta
+            al CAAF
+          </span>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+            <% @total = 0 %>
+            <% @operators.each do |operator| %>
+              <% if operator.requests.count > 0 %>
+                <tr>
+                  <td>
+                    <%= "#{operator.first_name} #{operator.last_name} - #{operator.category}" %>
+                  </td>
+                  <td>
+                    <%= operator.requests.count %>
+                  </td>
+                </tr>
+              <% end %>
+              <% @total = @total + operator.requests.count %>
+            <% end %>
+          </tbody>
+        </table>
+        <span class="float-end me-5 pe-5">
+          <h5 class="text-info">
+            Totale:
+            &emsp;
+            <%= @total %>
+            &emsp;
+            richieste
+          </h5>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <span class="text-primary">
+          Iscritti - Non Iscritti
+        </span>
+      </div>
+      <div class="card-body">
+        <span class="float-start">
+          Richieste da parte di Iscritti:
+          &emsp;
+          <span class="text-danger">
+            <%= @subscribers_requests.count %>
+          </span>
+        </span>
+        <br/>
+        <hr/>
+        <span class="float-start">
+          Richieste da parte di Non Iscritti:
+          &emsp;
+          <span class="text-success">
+            <%= @not_subscribers_requests.count %>
+          </span>
+        </span>
+      </div>
+    </div>
+    <br/>
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <span class="text-primary">
+          Esiti Richieste Appuntamento
+        </span>
+      </div>
+      <div class="card-body">
+        <span class="float-start">
+          Richieste con presa appuntamento:
+          &emsp;
+          <span class="text-success">
+            <%= @processed_requests.count %>
+          </span>
+        </span>
+        <br/>
+        <hr/>
+        <span class="float-start">
+          Richieste senza presa appuntamento:
+          &emsp;
+          <span class="text-danger">
+            <%= @not_processed_requests.count %>
+          </span>
+        </span>
+      </div>
+    </div>
+    <br/>
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <span class="text-primary">
+          Richieste per
+          Tipo Pratica
+        </span>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+            <% @practices.each do |practice| %>
+              <tr>
+                <td>
+                  <%= practice.name %>
+                </td>
+                <td>
+                  <%= practice.requests.count %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br/>
+    <div class="card card-primary shadow">
+      <div class="card-header">
+        <span class="text-primary">
+          Maschi - Femmine
+        </span>
+      </div>
+      <div class="card-body">
+        <span class="float-start">
+          Richieste da parte di Maschi:
+          &emsp;
+          <span class="text-info">
+            <%= @males.count %>
+          </span>
+        </span>
+        <br/>
+        <hr/>
+        <span class="float-start">
+          Richieste da parte di Femmine:
+          &emsp;
+          <span class="text-info">
+            <%= @females.count %>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>

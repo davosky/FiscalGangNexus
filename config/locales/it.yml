@@ -12,6 +12,7 @@ it:
       category: Categoria
       practice: Pratica
       request: Richiesta Pratica
+      sex: Sesso
     attributes:
       operator:
         username: Nome Utente
@@ -23,16 +24,25 @@ it:
         admin: Amministratore
         manager: Direttore
         regular: Operatore
+        requests: Richieste Pratica
       category:
         name: Categoria
         position: Posizione
         created_at: Creato Il
         updated_at: Aggiornato il
+        requests: Richieste Pratica
       practice:
         name: Pratica
         position: Posizione
         created_at: Creato Il
         updated_at: Aggiornato il
+        requests: Richieste Pratica
+      sex:
+        name: Sesso
+        position: Posizione
+        created_at: Creato Il
+        updated_at: Aggiornato il
+        requests: Richieste Pratica
       request:
         name: Numero
         date: Data
@@ -41,6 +51,7 @@ it:
         first_name: Nome
         last_name: Cognome
         sex: Sesso
+        sex_id: Sesso
         mobile: Cellulare
         email: E-Mail
         subscriber: Iscritto

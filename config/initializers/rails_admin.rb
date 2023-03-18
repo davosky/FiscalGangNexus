@@ -33,6 +33,12 @@ RailsAdmin.config do |config|
     label_plural "Richieste Pratica"
   end
 
+  config.model "Sex" do
+    visible true
+    label "Sesso"
+    label_plural "Sessi"
+  end
+
   config.actions do
     dashboard
     index

@@ -9,13 +9,13 @@
       </ul>
     </div>
   <% end %>
-  <h3 class="text-primary">
+  <h4 class="text-primary">
     Processamento della Richiesta Pratica N°:
     &emsp;
     <strong><%= @request.name %>&emsp;</strong>
     del&emsp;
     <strong><%= l(@request.date) %></strong>
-  </h3>
+  </h4>
   <hr class='hr-primary'/>
   <% if first_call_check(request) %>
     <%= form.check_box :first_call, class: "form-check-input form-check-input-primary", disabled: true %>
