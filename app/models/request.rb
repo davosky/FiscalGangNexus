@@ -86,4 +86,12 @@ class Request < ApplicationRecord
   validates :unprocessable, presence: true, if: :unprocessable_reason?
   validates :category_id, presence: true, if: :subscriber?
   validates :subscriber, presence: true, if: :category?
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "created_at", "date", "email", "first_call", "first_call_date", "first_call_updater", "first_name", "id", "last_name", "mobile", "name", "note", "operator_id", "practice_id", "processed", "second_call", "second_call_date", "second_call_updater", "sex_id", "subscriber", "third_call", "third_call_date", "third_call_updater", "unprocessable", "unprocessable_reason", "updated_at", "updater"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "operator", "practice", "sex"]
+  end
 end
